@@ -1,0 +1,36 @@
+<p>put-api works!</p>
+<form class="container mt-4">
+    <div class="form-group">
+      <label for="">Post Title</label>
+      <input
+        type="text"
+        [(ngModel)]="postObj.title"
+        [ngModelOptions]="{standalone: true}"
+        class="form-control"
+        placeholder="Enter Title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="">Post Body</label>
+      <input
+        type="text"
+        [(ngModel)]="postObj.body"
+        [ngModelOptions]="{standalone: true}"
+        class="form-control"
+        placeholder="Enter Body"
+      />
+    </div>
+    <div class="form-group">
+        <label for="">User Id</label>
+        <input
+          type="text"
+          [(ngModel)]="postObj.userId"
+          [ngModelOptions]="{standalone: true}"
+          class="form-control"
+          placeholder="Enter User Id"
+        />
+      </div>
+    {{postObj|json}}
+    <button type="submit" class="btn btn-primary" (click)="onSavePost()">
+      Submit
+    </button>

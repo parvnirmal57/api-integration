@@ -1,0 +1,108 @@
+<p>post-api works!</p>
+<form class="container mt-4">
+  <div class="form-group">
+    <label for="">Department Name</label>
+    <input
+      type="text"
+      [(ngModel)]="deptObj.deparmentName"
+      [ngModelOptions]="{standalone: true}"
+      class="form-control"
+      placeholder="Enter Department Name"
+    />
+  </div>
+  <div class="form-group">
+    <label for="">Department Logo</label>
+    <input
+      type="text"
+      [(ngModel)]="deptObj.deparmentLogo"
+      [ngModelOptions]="{standalone: true}"
+      class="form-control"
+      placeholder="Enter Department Logo"
+    />
+  </div>
+  {{deptObj|json}}
+  <button type="submit" class="btn btn-primary" (click)="onSave()">
+    Submit
+  </button>
+</form>
+<div class="row">
+  <div class="col-3">
+    <button class="btn btn-success container mt-2" (click)="getDepartment()">
+      Get Department
+    </button>
+  </div>
+  <div class="col-3">
+    <select class="form-select">
+      <option *ngFor="let item of deptList; let i = index" [value]="i">
+        {{ item.departmentName }}
+      </option>
+    </select>
+  </div>
+</div>
+<form class="container mt-4">
+  <div class="form-group">
+    <label for="">Leave Type</label>
+    <input
+      type="text"
+      [(ngModel)]="leaveObj.typeName"
+      class="form-control"
+      placeholder="Enter Leave Type"
+    />
+  </div>
+
+  <div class="col-6 text-center">
+    <button *ngIf="deptObj.departmentId === 0" class="btn btn-success" (click)="addNewLeaveType()">Save</button>
+    <button *ngIf="deptObj.departmentId !== 0" class="btn btn-warning" (click)="onUpdate()">Update</button>
+  </div>
+  
+</form>
+
+<div class="row">
+  <div class="col-3">
+    <button class="btn btn-success container mt-2" (click)="getLeaveType()">
+      Get Leave Type
+    </button>
+  </div>
+  <div class="col-3">
+    <select class="form-select">
+      <option *ngFor="let item of leaveList; let i = index" [value]="i">
+        {{ item.typeName }}
+      </option>
+    </select>
+  </div>
+
+  <div class="row pt-2">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header bg-secondary text-white">Leave Types</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Sr No</th>
+                    <th>Leave Type</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of leaveList; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ item.typeName }}</td>
+                    <td>
+                      <button class="btn btn-primary me-3" (click)="onEdit(item)">Edit</button>
+                      <button class="btn btn-danger" (click)="onEdit(item.earnedLeaveId
+                      )">Delete</button>
+                      
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

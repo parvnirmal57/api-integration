@@ -1,0 +1,75 @@
+<p>get-api works!</p>
+<div class="row container mt-4">
+    <div class="col-6">
+<button class="btn btn-success" (click)="getAllUsers()">Get Users</button>
+    </div>
+    <div class="col-6">
+<select class="form-select">
+    
+        <option *ngFor="let item of userList ; let i = index " [value]="i">{{item.name}}</option>
+    
+</select>
+</div>
+
+<div class="col-6">
+<button class="btn btn-warning" (click)="getAllProducts()">Get Products</button>
+</div>
+<div class="col-6">
+<select class="form-select">
+    
+        <option *ngFor="let item of productList ; let i = index " [value]="i">{{item.title}}</option>
+    
+</select>
+</div>
+<div class="col-6">
+    <button class="btn btn-primary" (click)="getAllCustomers()">Get Customers</button>
+</div>
+    <div class="col-6">
+    <select class="form-select">
+        
+            <option *ngFor="let item of customerList ; let i = index " [value]="i">{{item.userName}}</option>
+        
+    </select>
+    </div>
+</div>
+
+<div class="row pt-2">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-secondary text-white col-12">Product List</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Sr No</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                    <th>Rate</th>
+                    <th>Count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of productList; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.image }}</td>
+                    <td>{{ item.rating.rate }}</td>
+                    <td>{{ item.rating.count }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
